@@ -4,15 +4,11 @@ type FormProps = {
   onClickCancel: () => void;
 };
 
-// /^
-//   (?=.*\d)              // deve conter ao menos um dígito
-//   (?=.*[a-z])           // deve conter ao menos uma letra minúscula
-//   (?=.*[A-Z])           // deve conter ao menos uma letra maiúscula
-//   (?=.*[$*&@#])         // deve conter ao menos um caractere especial
-//   [0-9a-zA-Z$*&@#]{8,}  // deve conter ao menos 8 dos caracteres mencionados
-// $/
-
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+const passwordValidation = {
+  valid: 'valid-password-check',
+  invalid: 'invalid-password-check',
+};
 
 function Form({ onClickCancel }: FormProps) {
   const [serviceName, setServiceName] = useState('');
@@ -25,38 +21,76 @@ function Form({ onClickCancel }: FormProps) {
   );
 
   return (
-    <form>
-      <label htmlFor="service-name">Nome do serviço</label>
-      <input
-        id="service-name"
-        type="text"
-        value={ serviceName }
-        onChange={ ({ target }) => setServiceName(target.value) }
-      />
-      <label htmlFor="login">Login</label>
-      <input
-        id="login"
-        type="text"
-        value={ login }
-        onChange={ ({ target }) => setLogin(target.value) }
-      />
-      <label htmlFor="password">Senha</label>
-      <input
-        id="password"
-        type="password"
-        value={ password }
-        onChange={ ({ target }) => setPassword(target.value) }
-      />
-      <label htmlFor="url">URL</label>
-      <input
-        id="url"
-        type="text"
-        value={ url }
-        onChange={ ({ target }) => setUrl(target.value) }
-      />
-      <button disabled={ isDisabled }>Cadastrar</button>
-      <button onClick={ onClickCancel }>Cancelar</button>
-    </form>
+    <section>
+      <form>
+        <label htmlFor="service-name">Nome do serviço</label>
+        <input
+          id="service-name"
+          type="text"
+          value={ serviceName }
+          onChange={ ({ target }) => setServiceName(target.value) }
+        />
+        <label htmlFor="login">Login</label>
+        <input
+          id="login"
+          type="text"
+          value={ login }
+          onChange={ ({ target }) => setLogin(target.value) }
+        />
+        <label htmlFor="password">Senha</label>
+        <input
+          id="password"
+          type="password"
+          value={ password }
+          onChange={ ({ target }) => setPassword(target.value) }
+        />
+        <label htmlFor="url">URL</label>
+        <input
+          id="url"
+          type="text"
+          value={ url }
+          onChange={ ({ target }) => setUrl(target.value) }
+        />
+        <button disabled={ isDisabled }>Cadastrar</button>
+        <button onClick={ onClickCancel }>Cancelar</button>
+      </form>
+      <section>
+        <p
+          className={
+            password.length >= 8 ? 'valid-password-check' : 'invalid-password-check'
+          }
+        >
+          Possuir 8 ou mais caracteres
+        </p>
+        <p
+          className={
+            password.length <= 16
+              ? passwordValidation.valid
+              : passwordValidation.invalid
+          }
+        >
+          Possuir até 16 caracteres
+        </p>
+        <p
+          className={
+            /^(?=.*[A-Za-z])(?=.*[0-9])/.test(password)
+              ? passwordValidation.valid
+              : passwordValidation.invalid
+          }
+        >
+          Possuir letras e números
+        </p>
+        <p
+          className={
+            /(?=.*[@$!%*?&])/.test(password)
+              ? passwordValidation.valid
+              : passwordValidation.invalid
+          }
+        >
+          Possuir algum caractere especial
+        </p>
+      </section>
+    </section>
   );
 }
 
