@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { PasswordManagerType } from '../types/PasswordManagerType';
 
 type FormProps = {
-  onClickCancel: () => void;
+  onClickCancel: () => void,
+  onClickRegister: (content: PasswordManagerType) => void,
 };
 
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,16}$/;
 const passwordValidation = {
   valid: 'valid-password-check',
   invalid: 'invalid-password-check',
 };
 
-function Form({ onClickCancel }: FormProps) {
+function Form({ onClickCancel, onClickRegister }: FormProps) {
   const [serviceName, setServiceName] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +21,12 @@ function Form({ onClickCancel }: FormProps) {
   const isDisabled = !(
     serviceName.length > 0 && login.length > 0 && passwordRegex.test(password)
   );
+
+  const handleClickRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    onClickRegister({ serviceName, login, password, url });
+    onClickCancel();
+  };
 
   return (
     <section>
@@ -51,7 +59,12 @@ function Form({ onClickCancel }: FormProps) {
           value={ url }
           onChange={ ({ target }) => setUrl(target.value) }
         />
-        <button disabled={ isDisabled }>Cadastrar</button>
+        <button
+          disabled={ isDisabled }
+          onClick={ (e) => handleClickRegister(e) }
+        >
+          Cadastrar
+        </button>
         <button onClick={ onClickCancel }>Cancelar</button>
       </form>
       <section>
@@ -82,7 +95,7 @@ function Form({ onClickCancel }: FormProps) {
         </p>
         <p
           className={
-            /(?=.*[@$!%*?&])/.test(password)
+            /(?=.*[@$!%*?&#])/.test(password)
               ? passwordValidation.valid
               : passwordValidation.invalid
           }
