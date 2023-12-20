@@ -19,6 +19,12 @@ function App() {
     setPasswordManagerList([...passwordManagerList, content]);
   };
 
+  const removeCard = (service: string) => {
+    const newList = passwordManagerList
+      .filter(({ serviceName }) => serviceName !== service);
+    setPasswordManagerList(newList);
+  };
+
   return (
     <>
       <header><Title /></header>
@@ -32,7 +38,12 @@ function App() {
         {
           passwordManagerList.length > 0
             ? passwordManagerList
-              .map((element) => (<Card key={ element.serviceName } { ...element } />
+              .map((element) => (
+                <Card
+                  key={ element.serviceName }
+                  { ...element }
+                  onClickRemove={ removeCard }
+                />
               ))
             : <p>Nenhuma senha cadastrada</p>
         }
