@@ -17,6 +17,7 @@ function Form({ onClickCancel, onClickRegister }: FormProps) {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [url, setUrl] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const isDisabled = !(
     serviceName.length > 0 && login.length > 0 && passwordRegex.test(password)
@@ -26,6 +27,11 @@ function Form({ onClickCancel, onClickRegister }: FormProps) {
     e.preventDefault();
     onClickRegister({ serviceName, login, password, url });
     onClickCancel();
+  };
+
+  const handleClickShowPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -48,10 +54,16 @@ function Form({ onClickCancel, onClickRegister }: FormProps) {
         <label htmlFor="password">Senha</label>
         <input
           id="password"
-          type="password"
+          type={ showPassword ? 'text' : 'password' }
           value={ password }
           onChange={ ({ target }) => setPassword(target.value) }
         />
+        <button
+          data-testid="show-hide-form-password"
+          onClick={ (e) => handleClickShowPassword(e) }
+        >
+          mostrar/esconder senha
+        </button>
         <label htmlFor="url">URL</label>
         <input
           id="url"
