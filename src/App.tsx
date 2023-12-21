@@ -10,6 +10,7 @@ function App() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [passwordManagerList, setPasswordManagerList] = useState<
   PasswordManagerType[]>([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleToggleForm = () => {
     setIsFormVisible(!isFormVisible);
@@ -25,6 +26,10 @@ function App() {
     setPasswordManagerList(newList);
   };
 
+  const handleClickHidePassword = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <>
       <header><Title /></header>
@@ -37,14 +42,28 @@ function App() {
       <section>
         {
           passwordManagerList.length > 0
-            ? passwordManagerList
-              .map((element) => (
-                <Card
-                  key={ element.serviceName }
-                  { ...element }
-                  onClickRemove={ removeCard }
+            ? (
+              <>
+                <label htmlFor="hide-passwords">Esconder senhas</label>
+                <input
+                  type="checkbox"
+                  id="hide-passwords"
+                  checked={ isChecked }
+                  onClick={ handleClickHidePassword }
                 />
-              ))
+                {
+                  passwordManagerList
+                    .map((element) => (
+                      <Card
+                        key={ element.serviceName }
+                        { ...element }
+                        onClickRemove={ removeCard }
+                        hidePassword={ isChecked }
+                      />
+                    ))
+                }
+              </>
+            )
             : <p>Nenhuma senha cadastrada</p>
         }
       </section>
