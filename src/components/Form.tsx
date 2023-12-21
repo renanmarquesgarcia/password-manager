@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { PasswordManagerType } from '../types/PasswordManagerType';
 
@@ -11,6 +12,18 @@ const passwordValidation = {
   valid: 'valid-password-check',
   invalid: 'invalid-password-check',
 };
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  },
+});
 
 function Form({ onClickCancel, onClickRegister }: FormProps) {
   const [serviceName, setServiceName] = useState('');
@@ -26,6 +39,11 @@ function Form({ onClickCancel, onClickRegister }: FormProps) {
   const handleClickRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     onClickRegister({ serviceName, login, password, url });
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Serviço cadastrado com sucesso',
+    });
     onClickCancel();
   };
 
