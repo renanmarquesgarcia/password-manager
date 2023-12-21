@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Form from './components/Form';
 import Title from './components/Title';
 import { PasswordManagerType } from './types/PasswordManagerType';
+import lockerIcon from './images/locker-img.svg';
 import './App.css';
 
 function App() {
@@ -38,7 +39,11 @@ function App() {
             onClickCancel={ handleToggleForm }
             onClickRegister={ addNewContent }
         />
-        : <Button text="Cadastrar nova senha" onClickShowForm={ handleToggleForm } /> }
+        : <Button
+            text="Cadastrar nova senha"
+            onClickShowForm={ handleToggleForm }
+        /> }
+      <hr className="line" />
       <section>
         {
           passwordManagerList.length > 0
@@ -64,7 +69,12 @@ function App() {
                 }
               </>
             )
-            : <p>Nenhuma senha cadastrada</p>
+            : (
+              <section>
+                <p className="no-registed-password">Nenhuma senha cadastrada</p>
+                <img className="locker-img" src={ lockerIcon } alt="icone de cadeado" />
+              </section>
+            )
         }
       </section>
     </>

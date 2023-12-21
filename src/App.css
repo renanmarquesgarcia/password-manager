@@ -1,3 +1,60 @@
+:root {
+
+  --bg-gray: #3b3f50;
+
+  --btn-blue: #3590f5;
+
+  --asterisk-red: #d11d1d;
+
+  --label-gray: #8d8d8d;
+
+  --label-card-gray: #9cbce0;
+}
+
+#root {
+  text-align: center;
+}
+
+header {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: larger;
+  height: 180px;
+  justify-content: center;
+}
+
+h1 span {
+  color: #3187e7;
+}
+
+.register-btn {
+  background-color: var(--btn-blue);
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 50px;
+  padding: 15px 25px;
+}
+
+.line {
+  background-color: #cacaca;
+  margin: 0 auto;
+  margin-bottom: 130px;
+  width: 291px;
+}
+
+.no-registed-password {
+  color: #838383;
+  font-size: 26px;
+}
+
+.locker-img {
+  width: 40px;
+}
+
 .valid-password-check {
   color: #aeffb6;
 }

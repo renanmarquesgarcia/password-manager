@@ -4,7 +4,14 @@ type ButtonProps = {
 };
 
 function Button({ text, onClickShowForm }: ButtonProps) {
-  return (<button onClick={ onClickShowForm }>{ text }</button>);
+  return (
+    <button
+      className="register-btn"
+      onClick={ onClickShowForm }
+    >
+      { text }
+    </button>
+  );
 }
 
 export default Button;
