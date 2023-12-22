@@ -44,18 +44,18 @@ function App() {
             onClickShowForm={ handleToggleForm }
         /> }
       <hr className="line" />
-      <section>
-        {
-          passwordManagerList.length > 0
-            ? (
-              <>
-                <label htmlFor="hide-passwords">Esconder senhas</label>
-                <input
-                  type="checkbox"
-                  id="hide-passwords"
-                  checked={ isChecked }
-                  onClick={ handleClickHidePassword }
-                />
+      {
+        passwordManagerList.length > 0
+          ? (
+            <>
+              <label htmlFor="hide-passwords">Esconder senhas</label>
+              <input
+                type="checkbox"
+                id="hide-passwords"
+                checked={ isChecked }
+                onClick={ handleClickHidePassword }
+              />
+              <section className="card-list-container">
                 {
                   passwordManagerList
                     .map((element) => (
@@ -67,16 +67,16 @@ function App() {
                       />
                     ))
                 }
-              </>
-            )
-            : (
-              <section>
-                <p className="no-registed-password">Nenhuma senha cadastrada</p>
-                <img className="locker-img" src={ lockerIcon } alt="icone de cadeado" />
               </section>
-            )
-        }
-      </section>
+            </>
+          )
+          : (
+            <section>
+              <p className="no-registed-password">Nenhuma senha cadastrada</p>
+              <img className="locker-img" src={ lockerIcon } alt="icone de cadeado" />
+            </section>
+          )
+      }
     </>
   );
 }
