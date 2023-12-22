@@ -20,7 +20,7 @@ header {
   color: white;
   display: flex;
   font-size: larger;
-  height: 180px;
+  height: 150px;
   justify-content: center;
 }
 
@@ -35,14 +35,12 @@ h1 span {
   color: white;
   cursor: pointer;
   font-size: 18px;
-  margin-bottom: 50px;
   padding: 15px 25px;
 }
 
 .line {
   background-color: #cacaca;
-  margin: 0 auto;
-  margin-bottom: 130px;
+  margin: 50px auto 20px;
   width: 291px;
 }
 
@@ -53,6 +51,125 @@ h1 span {
 
 .locker-img {
   width: 40px;
+}
+
+.form-container {
+  background-color: #1e2029;
+  border-radius: 10px;
+  display: flex;
+  gap: 15px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 60%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+}
+
+.form label {
+  color: var(--label-gray);
+}
+
+.service-container, .login-container, .password-container, .url-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+form div input {
+  background-color: var(--bg-gray);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  width: 90%;
+}
+
+form div input:focus {
+  outline: 2px solid var(--btn-blue);
+}
+
+.login-password-container {
+  display: flex;
+  gap: 10px;
+}
+
+.login-container, .password-container {
+  width: 46.5%;
+}
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  background-color: transparent;
+  border: none;
+  bottom: 0;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  transform: translate(-8px, 3px);
+}
+
+.form-btns-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  width: 93%;
+}
+
+.form-register-btn {
+  background-color: var(--btn-blue);
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px 40px;
+}
+
+.form-register-btn:disabled {
+  background-color: var(--label-gray);
+  cursor: not-allowed;
+}
+
+.form-cancel-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-blue);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.validation-password-container {
+  align-items: flex-start;
+  align-self: center;
+  background-color: #252730;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 0px;
+  margin-bottom: 55px;
+  padding: 10px 20px;
+  position: relative;
+  width: 30%;
+}
+
+.triangle {
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #252730;
+  border-top: 20px solid transparent;
+  bottom: 35%;
+  height: 0;
+  position: absolute;
+  transform: translate(-40px);
+  width: 0;
 }
 
 .valid-password-check {
