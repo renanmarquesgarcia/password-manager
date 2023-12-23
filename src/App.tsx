@@ -39,22 +39,33 @@ function App() {
             onClickCancel={ handleToggleForm }
             onClickRegister={ addNewContent }
         />
-        : <Button
-            text="Cadastrar nova senha"
-            onClickShowForm={ handleToggleForm }
-        /> }
+        : (
+          <div className="register-btn-container">
+            <Button
+              text="Cadastrar nova senha"
+              onClickShowForm={ handleToggleForm }
+            />
+          </div>
+        )}
+
       <hr className="line" />
       {
         passwordManagerList.length > 0
           ? (
             <>
-              <label htmlFor="hide-passwords">Esconder senhas</label>
-              <input
-                type="checkbox"
-                id="hide-passwords"
-                checked={ isChecked }
-                onClick={ handleClickHidePassword }
-              />
+              <div className="hide-password-container">
+                <label htmlFor="hide-passwords">Esconder senhas</label>
+                <input
+                  type="checkbox"
+                  id="hide-passwords"
+                  checked={ isChecked }
+                  onClick={ handleClickHidePassword }
+                  className="chk"
+                />
+                <label htmlFor="hide-passwords" className="switch">
+                  <span className="slider" />
+                </label>
+              </div>
               <section className="card-list-container">
                 {
                   passwordManagerList
