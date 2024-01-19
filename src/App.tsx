@@ -82,7 +82,7 @@ function App() {
             </>
           )
           : (
-            <section>
+            <section className="no-registed-password-section">
               <p className="no-registed-password">Nenhuma senha cadastrada</p>
               <img className="locker-img" src={ lockerIcon } alt="icone de cadeado" />
             </section>

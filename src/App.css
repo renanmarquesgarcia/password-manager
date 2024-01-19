@@ -44,6 +44,9 @@ h1 span {
   width: 291px;
 }
 
+.no-registed-password-section {
+  text-align: center;
+}
 .no-registed-password {
   color: #838383;
   font-size: 26px;
@@ -155,11 +158,12 @@ form div input:focus {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  line-height: 0px;
+  /* line-height: 0px; */
   margin-bottom: 55px;
   padding: 10px 20px;
   position: relative;
   width: 35%;
+  display: block;
 }
 
 .triangle {
