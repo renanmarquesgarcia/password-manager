@@ -4,6 +4,8 @@
 
   O projeto foi desenvolvido utilizando React e TypeScript. Utilzando conhecimentos em props, estados, eventos e formulários.
 
+  Caso queira acessar o site: `https://password-manager-drab.vercel.app/`
+
 # Orientações
   <details>
   <summary><strong>‼️ Para rodar o projeto em sua máquina</strong></summary><br />
