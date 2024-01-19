@@ -5,7 +5,7 @@
   O projeto foi desenvolvido utilizando React e TypeScript. Utilzando conhecimentos em props, estados, eventos e formulários.
 
 # Orientações
-
+  <details>
   <summary><strong>‼️ Para rodar o projeto em sua máquina</strong></summary><br />
 
   1. Clone o repositório
@@ -23,3 +23,4 @@
   - Exemplo: `git checkout -b seu-nome-password-manager`
 
   4. execute o comando: `npm run dev`
+  </details>
